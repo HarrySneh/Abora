@@ -1,26 +1,21 @@
 import { useState } from "react";
 
-import { Navbar } from "./components/layout/Navbar";
-import { HeroSection } from "./components/hero/HeroSection";
+import { AppRouter } from "./router/AppRouter";
 
-import { ServicesSection } from "./components/services/ServicesSection";
-import { GallerySection } from "./components/gallery/GallerySection";
-import { ProcessSection } from "./components/process/ProcessSection";
+import { FloatingCTA } from "./components/layout/FloatingCTA";
+
+import { BookingModal } from "./components/booking/BookingModal";
 
 function App() {
   const [bookingOpen, setBookingOpen] = useState(false);
 
   return (
     <main className="bg-obsidian text-white">
-      <Navbar onBookClick={() => setBookingOpen(true)} />
+      <AppRouter onBookClick={() => setBookingOpen(true)} />
 
-      <HeroSection onBookClick={() => setBookingOpen(true)} />
+      <FloatingCTA onBookClick={() => setBookingOpen(true)} />
 
-      <ServicesSection />
-
-      <GallerySection />
-
-      <ProcessSection />
+      <BookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} />
     </main>
   );
 }
